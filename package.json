@@ -20,6 +20,9 @@
     "type": "git",
     "url": "git+https://github.com/ThRintelen/ngx-api-mock.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

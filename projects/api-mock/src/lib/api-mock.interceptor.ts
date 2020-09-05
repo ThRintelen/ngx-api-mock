@@ -9,9 +9,6 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { NgxApiMockConfig, NGX_API_MOCK_CONFIG } from './api-mock.config';
 
-// TODO Readme
-// TODO Einabu bei traperto
-
 @Injectable()
 export class ApiMockInterceptor implements HttpInterceptor {
   constructor(
@@ -23,11 +20,11 @@ export class ApiMockInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const partFoundInUrl = this.apiMockConfig.urlParts
-      .map((part) => req.url.includes(part))
-      .find((result) => result === true);
+    const partFoundInUrl = this.apiMockConfig.urlParts.map((part) =>
+      req.url.includes(part)
+    );
 
-    if (!partFoundInUrl) {
+    if (partFoundInUrl.length === 0) {
       return next.handle(req);
     }
 
@@ -39,7 +36,7 @@ export class ApiMockInterceptor implements HttpInterceptor {
         !!req.url.match(`${rule.pattern}$`)
     );
 
-    // check pattern
+    // check only pattern
     if (!foundRule) {
       foundRule = this.apiMockConfig.rules.find(
         (rule) => !!req.url.match(`${rule.pattern}$`)

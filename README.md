@@ -1,27 +1,62 @@
-# NgxApiMock
+# API Mock for Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
+Mock API calls while development, testing or building an example library.
+Define results based on url pattern and if needed http methods.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`npm install ngx-api-mock --save`
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Import `NgxApiMockModule` into your app's modules:
 
-## Build
+```typescript
+import { NgxApiMockModule } from '@ngx-api-mock';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+@NgModule({
+  imports: [
+    NgxApiMockModule.forRoot(config)
+  ]
+})
+```
 
-## Running unit tests
+## Configuration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### urlParts: `string[]`
 
-## Running end-to-end tests
+Trigger api mock interceptor for any url wich contain on part of the list.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### rules: `{pattern: string; response: any; method?: HttpMethod;}[]`
 
-## Further help
+Matching url based on pattern and if set method to return result.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Examples
+
+```typescript
+@NgModule({
+  imports: [
+    NgxApiMockModule.forRoot({
+      urlParts: ['thorsten-rintelen.de/v1/'],
+      rules: [
+        {
+          pattern: 'users/\\d+',
+          response: 'success',
+          method: 'POST',
+        },
+        {
+          pattern: 'users/\\d+',
+          response: true,
+          method: 'DELETE',
+        },
+      ],
+    })
+  ]
+})
+```
+
+### Demo
+
+```html
+ng serve
+```
