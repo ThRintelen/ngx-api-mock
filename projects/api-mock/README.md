@@ -1,24 +1,56 @@
-# ApiMock
+# API Mock for Angular
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
+Mock API calls while development, testing or building an example library.
+Define results based on url pattern and if needed http methods.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project api-mock` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project api-mock`.
-> Note: Don't forget to add `--project api-mock` or else it will be added to the default project in your `angular.json` file. 
+`npm install ngx-api-mock --save`
 
-## Build
+## Usage
 
-Run `ng build api-mock` to build the project. The build artifacts will be stored in the `dist/` directory.
+Import `NgxApiMockModule` into your app's modules:
 
-## Publishing
+```typescript
+import { NgxApiMockModule } from '@ngx-api-mock';
 
-After building your library with `ng build api-mock`, go to the dist folder `cd dist/api-mock` and run `npm publish`.
+@NgModule({
+  imports: [
+    NgxApiMockModule.forRoot(config)
+  ]
+})
+```
 
-## Running unit tests
+## Configuration
 
-Run `ng test api-mock` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### urlParts: `string[]`
 
-## Further help
+Trigger api mock interceptor for any url wich contain on part of the list.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### rules: `{pattern: string; response: any; method?: HttpMethod;}[]`
+
+Matching url based on pattern and if set method to return result.
+
+### Examples
+
+```typescript
+@NgModule({
+  imports: [
+    NgxApiMockModule.forRoot({
+      urlParts: ['thorsten-rintelen.de/v1/'],
+      rules: [
+        {
+          pattern: 'users/\\d+',
+          response: 'success',
+          method: 'POST',
+        },
+        {
+          pattern: 'users/\\d+',
+          response: true,
+          method: 'DELETE',
+        },
+      ],
+    })
+  ]
+})
+```

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-api-mock": {
+    "ngx-api-mock-example": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-api-mock",
+            "outputPath": "dist/ngx-api-mock-example",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -92,7 +92,7 @@
         }
       }
     },
-    "api-mock": {
+    "ngx-api-mock": {
       "projectType": "library",
       "root": "projects/api-mock",
       "sourceRoot": "projects/api-mock/src",
@@ -125,9 +125,13 @@
               "projects/api-mock/tsconfig.lib.json",
               "projects/api-mock/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       }

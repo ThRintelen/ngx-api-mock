@@ -1,11 +1,29 @@
 {
-  "name": "api-mock",
-  "version": "0.0.1",
+  "name": "ngx-api-mock",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^10.1.0",
     "@angular/core": "^10.1.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"
+  },
+  "description": "Angular api mock interceptor",
+  "keywords": [
+    "angular",
+    "api",
+    "mock",
+    "interceptor"
+  ],
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "Thorsten Rintelen",
+  "bugs": {
+    "url": "https://github.com/ThRintelen/ngx-api-mock/issues"
+  },
+  "homepage": "https://github.com/ThRintelen/ngx-api-mock",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThRintelen/ngx-api-mock.git"
   }
 }
