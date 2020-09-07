@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
-type HttpMethod = 'POST' | 'GET' | 'PUT' | 'DELETE' | 'PATCH';
+type HttpMethod = 'POST' | 'GET' | 'PUT' | 'DELETE' | 'PATCH' | 'UPDATE';
 
 interface ApiMockResponse {
   pattern: string;
