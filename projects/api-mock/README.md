@@ -12,7 +12,7 @@ Define results based on url pattern and if needed http methods.
 Import `NgxApiMockModule` into your app's modules:
 
 ```typescript
-import { NgxApiMockModule } from '@ngx-api-mock';
+import { NgxApiMockModule } from 'ngx-api-mock';
 
 @NgModule({
   imports: [
