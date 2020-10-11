@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { NgxApiMockConfig, NGX_API_MOCK_CONFIG } from './api-mock.config';
 
 @Injectable()
@@ -48,6 +49,6 @@ export class ApiMockInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    return of(new HttpResponse({ body: foundRule.response }));
+    return of(new HttpResponse({ body: foundRule.response })).pipe(delay(foundRule.delay || 0));
   }
 }
