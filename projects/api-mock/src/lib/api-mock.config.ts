@@ -6,6 +6,7 @@ interface ApiMockResponse {
   pattern: string;
   response: any;
   method?: HttpMethod;
+  delay?: number;
 }
 
 export interface NgxApiMockConfig {
