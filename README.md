@@ -27,7 +27,7 @@ import { NgxApiMockModule } from 'ngx-api-mock';
 
 Trigger api mock interceptor for any url wich contain on part of the list.
 
-### rules: `{pattern: string; response: any; method?: HttpMethod;}[]`
+### rules: `{pattern: string; response: any; method?: HttpMethod; delay: number;}[]`
 
 Matching url based on pattern and if set method to return result.
 
@@ -48,6 +48,7 @@ Matching url based on pattern and if set method to return result.
           pattern: 'users/\\d+',
           response: true,
           method: 'DELETE',
+          delay: 2000
         },
       ],
     })
