@@ -9,9 +9,9 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2020",
     "module": "es2020",
-    "lib": ["es2018", "dom"],
+    "lib": ["es2020", "dom"],
     "paths": {
       "api-mock": ["dist/api-mock/api-mock", "dist/api-mock"],
       "@ngx-api-mock": ["projects/api-mock/src/public_api"]
